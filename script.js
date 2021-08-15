@@ -3,28 +3,24 @@ class Calculator{
         this.previousTextElement=previousTextElement
         this.currentTextElement=currentTextElement
       this.clear()
-
     }
+
     clear(){
         this.currentOperand=''
         this.previousOperand=''   
-        this.operation=undefined     
-        
+        this.operation=undefined        
     }
 
     inputNumber(number){
        
         if(number ==='.' && this.currentOperand.includes('.')) return
-        this.currentOperand= this.currentOperand.toString() + number.toString() 
-        console.log(this.currentOperand)
-
+        this.currentOperand= this.currentOperand.toString() + number.toString()      
     }
    
     delete(){
         this.currentOperand =this.currentOperand.toString().slice(0, -1)
-
-
     }
+
     compute(){
         let computation;
         const prev =parseFloat(this.previousOperand)
@@ -51,6 +47,7 @@ class Calculator{
         this.previousOperand =''
 
     }
+
     getDisplayNumber(number){
         const stringNumber= number.toString()
         const integerDigits = parseFloat(stringNumber.split('.')[0])
@@ -60,7 +57,7 @@ class Calculator{
 
         if(isNaN(integerDigits)){
             integerDisplay =''
-        } else{
+        } else {
             integerDisplay= integerDigits.toLocaleString('en',{
                 maximumFractionDigits : 0 })
         }
@@ -79,7 +76,7 @@ class Calculator{
         if(this.operation !== undefined){       
         this.previousTextElement.innerText= `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
               
-      } else{
+      } else {
             this.previousTextElement.innerText=''
         }
 
@@ -97,8 +94,6 @@ class Calculator{
 
     }
 }
-
-
 
 
 const numberButtons= document.querySelectorAll('[data-number]')
